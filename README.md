@@ -8,35 +8,36 @@ dslib provides template-based implementations of fundamental data structures, ma
 
 ## Available Data Structures
 
-### Linear Data Structures
-- **List**: A doubly-linked list implementation
+- **Linked List**: A singly-linked list implementation (`list.h`)
   - Supports insertion/deletion at beginning, end, and arbitrary positions
-  - Bidirectional traversal
+  - Forward traversal
   - Template-based for any data type
 
-- **Queue**: FIFO (First-In-First-Out) container
-  - Efficient enqueue and dequeue operations
-  - Front and rear access
-  - Size tracking
+- **Queue**:
+  - **Dynamic Queue** (`dqueue.h`): FIFO container using linked list
+    - Efficient enqueue and dequeue operations
+    - Front and rear access
+    - Unlimited size
+  - **Static Queue** (`squeue.h`): FIFO container using array
+    - Fixed-size implementation
+    - Circular array for space efficiency
+    - Size tracking
 
-- **Stack**: LIFO (Last-In-First-Out) container
-  - Push and pop operations
-  - Top element access
-  - Empty state checking
-
-### Hash-Based Structures
-- **HashMap**: Key-value pair storage
-  - Dynamic resizing
-  - Collision handling
-  - Efficient key-based lookups
-  - Template support for custom key and value types
+- **Stack**:
+  - **Dynamic Stack** (`dstack.h`): LIFO container using linked list
+    - Push and pop operations
+    - Top element access
+    - Unlimited size
+  - **Static Stack** (`sstack.h`): LIFO container using array
+    - Fixed-size implementation
+    - Efficient memory usage
+    - Size tracking
 
 ## Features
 
 - **Header-Only**: Just include and use
 - **Template-Based**: Works with any data type
-- **Exception Safe**: Proper error handling
-- **Memory Efficient**: Optimized memory usage
+- **Memory Efficient**: Both static and dynamic implementations
 - **Modern C++**: Utilizes C++11 and later features
 - **Well-Documented**: Clear documentation and examples
 
@@ -48,9 +49,10 @@ Simply copy the header files into your project and include them:
 
 ```cpp
 #include "list.h"
-#include "queue.h"
-#include "stack.h"
-#include "hashmap.h"
+#include "dqueue.h"
+#include "squeue.h"
+#include "dstack.h"
+#include "sstack.h"
 ```
 
 ### Basic Examples
@@ -63,20 +65,20 @@ myList.insertAtEnd(2);
 myList.printList();
 ```
 
-#### Using Queue
+#### Using Dynamic Queue
 ```cpp
-Queue<string> myQueue;
+DQueue<string> myQueue;
 myQueue.enqueue("first");
 myQueue.enqueue("second");
 cout << myQueue.getFront(); // prints "first"
 ```
 
-#### Using HashMap
+#### Using Static Stack
 ```cpp
-HashMap<string, int> myMap;
-myMap.put("key1", 100);
-myMap.put("key2", 200);
-cout << myMap.get("key1"); // prints 100
+SStack<int> myStack;
+myStack.push(100);
+myStack.push(200);
+cout << myStack.getTop(); // prints 200
 ```
 
 ## Requirements
@@ -90,9 +92,17 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Future Plans
 
-- [ ] Implementation of trees
+- [ ] Implementation of additional data structures
+  - [ ] Binary Search Tree (BST)
+  - [ ] Hash Table
+  - [ ] Priority Queue/Heap
+  - [ ] Graph
 - [ ] Comprehensive test coverage using gtest
-- [ ] Performance improvement using faster algorithms
+- [ ] Performance benchmarking and optimization
+- [ ] Iterator support for all containers
+- [ ] Exception handling for edge cases
+- [ ] Documentation improvements
+  - [ ] Usage examples
 
 ## Contact
 
