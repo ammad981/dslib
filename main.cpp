@@ -14,6 +14,8 @@ int main() {
     List<Data> list();
     DStack<Data> dstack();
     DQueue<Data> dqueue();
+    SStack<Data> sstack();
+    SQueue<Data> squeue();
 
     return 0;
 }
