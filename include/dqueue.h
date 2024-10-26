@@ -1,5 +1,5 @@
 // Dynamic Queue implemented with linked list
-// Author:
+// Author: Ammad Qureshi 23122--
 
 #ifndef DQUEUE_H
 #define DQUEUE_H

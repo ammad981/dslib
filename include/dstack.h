@@ -1,5 +1,5 @@
 // Dynamic Stack implemented with linked list
-// Author:
+// Author: Wajeeh Ahmed 23122--
 
 #ifndef DSTACK_H
 #define DSTACK_H

@@ -1,5 +1,5 @@
 // Static size queue implemented with arrays
-// Author:
+// Author: Muhmmad Ahmad 23122--
 
 #ifndef SQUEUE_H
 #define SQUEUE_H

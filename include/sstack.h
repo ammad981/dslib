@@ -1,5 +1,5 @@
 // Static size stack implemented with arrays
-// Author:
+// Author: Musa Ibrahim 23122--
 #ifndef SSTACK_H
 #define SSTACK_H
 

@@ -1,5 +1,5 @@
 // Singular Linked List
-// Author:
+// Author: Hammad Majid 2312200
 
 #ifndef LIST_H
 #define LIST_H
