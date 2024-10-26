@@ -12,8 +12,8 @@ class DStack {
 
     Node *top;
 public:
-    DStack();
-    ~DStack();
+    DStack(): top(nullptr) {
+    }
 
     void push(T data) {}
     void pop() {}

@@ -10,9 +10,8 @@ class SStack {
     int topIndex;
 
 public:
-    SStack() {}
-
-    ~SStack() {}
+    SStack(): arr(nullptr), topIndex(0) {
+    }
 
     void push(T data) {}
 

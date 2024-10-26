@@ -12,8 +12,8 @@ class List {
 
     Node *head;
 public:
-    List();
-    ~List();
+    List(): head(nullptr) {
+    }
 
     void insertAtBegin(T data) {}
     void insertAtEnd(T data) {}

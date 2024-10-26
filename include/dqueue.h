@@ -13,8 +13,8 @@ class DQueue {
     Node *front;
     Node *rear;
 public:
-    DQueue();
-    ~DQueue();
+    DQueue(): front(nullptr), rear(nullptr) {
+    }
 
     void enqueue(T data) {}
     void dequeue() {}

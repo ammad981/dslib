@@ -13,9 +13,8 @@ class SQueue {
     int count;
 
 public:
-    SQueue() {}
-
-    ~SQueue() {}
+    SQueue(): arr(nullptr), frontIndex(0), rearIndex(0), count(0) {
+    }
 
     void enqueue(T data) {}
 
