@@ -20,10 +20,6 @@ public:
     void deleteAtEnd() {}
     void deleteAtMiddle(unsigned int position) {}
 
-    T getAtBegin() {}
-    T getAtEnd() {}
-    T getAtMiddle(unsigned int position) {}
-
     void printList() {}
 };
 
