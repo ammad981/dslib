@@ -1,16 +1,19 @@
-#ifndef STACK_H
-#define STACK_H
+// Dynamic Stack implemented with linked list
+// Author:
+
+#ifndef DSTACK_H
+#define DSTACK_H
 
 template <typename T>
-class Stack {
+class DStack {
     struct Node {
 
     };
 
     Node *top;
 public:
-    Stack();
-    ~Stack();
+    DStack();
+    ~DStack();
 
     void push(T data) {}
     void pop() {}

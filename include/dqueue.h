@@ -1,8 +1,11 @@
-#ifndef QUEUE_H
-#define QUEUE_H
+// Dynamic Queue implemented with linked list
+// Author:
+
+#ifndef DQUEUE_H
+#define DQUEUE_H
 
 template <typename T>
-class Queue {
+class DQueue {
     struct Node {
 
     };
@@ -10,8 +13,8 @@ class Queue {
     Node *front;
     Node *rear;
 public:
-    Queue();
-    ~Queue();
+    DQueue();
+    ~DQueue();
 
     void enqueue(T data) {}
     void dequeue() {}

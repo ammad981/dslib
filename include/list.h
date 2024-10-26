@@ -1,3 +1,6 @@
+// Singular Linked List
+// Author:
+
 #ifndef LIST_H
 #define LIST_H
 

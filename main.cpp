@@ -1,7 +1,9 @@
 #include <iostream>
 #include "list.h"
-#include "stack.h"
-#include "queue.h"
+#include "dstack.h"
+#include "dqueue.h"
+#include "squeue.h"
+#include "sstack.h"
 
 struct Data {
     int foo;
@@ -10,8 +12,8 @@ struct Data {
 
 int main() {
     List<Data> list();
-    Stack<Data> stack();
-    Queue<Data> queue();
+    DStack<Data> dstack();
+    DQueue<Data> dqueue();
 
     return 0;
 }
