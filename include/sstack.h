@@ -1,29 +1,61 @@
 // Static size stack implemented with arrays
-// Author: Musa Ibrahim 23122--
+// Author: Musa Ibrahim 2312211
+
 #ifndef SSTACK_H
 #define SSTACK_H
 
-template <typename T>
+template<typename T>
 class SStack {
     const int MAX_SIZE = 100;
-    T* arr;
+    T arr[100];
     int topIndex;
 
 public:
-    SStack(): arr(nullptr), topIndex(0) {
+    SStack(): topIndex(-1) {
     }
 
-    void push(T data) {}
+    void push(T data) {
+        if (!isFull()) {
+            arr[++topIndex] = data;
+        }
+    }
 
-    void pop() {}
+    void pop() {
+        if (!isEmpty()) {
+            topIndex--;
+        }
+    }
 
-    T getTop() {}
+    T getTop() {
+        if (!isEmpty()) {
+            return arr[topIndex];
+        }
+        return T(); // Returning default value if stack is empty.
+    }
 
-    bool isEmpty() {}
+    bool isEmpty() {
+        return topIndex == -1;
+    }
 
-    bool isFull() {}
+    bool isFull() {
+        return topIndex == MAX_SIZE - 1;
+    }
 
-    void printStack() {}
+    int search(T data) {
+        for (int i = topIndex; i >= 0; i--) {
+            if (arr[i] == data) {
+                return topIndex - i;
+            }
+        }
+        return -1; // Returning -1 if element is not found.
+    }
+
+    void printStack() {
+        for (int i = topIndex; i >= 0; i--) {
+            std::cout << arr[i] << " ";
+        }
+        std::cout << std::endl;
+    }
 };
 
 #endif
