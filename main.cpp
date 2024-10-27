@@ -7,28 +7,21 @@
 
 using namespace std;
 
-struct Data {
-    int foo;
-    char bar;
-};
-
 // Function to print Data
-void printData(Data d) {
-    cout << "foo: " << d.foo << ", bar: " << d.bar << endl;
+void printData(char x) {
+    cout << "x: " << x << endl;
 }
 
 // Function to get Data input from user
-Data getData() {
-    Data d{};
-    cout << "Enter integer value (foo): ";
-    cin >> d.foo;
-    cout << "Enter character value (bar): ";
-    cin >> d.bar;
-    return d;
+char getData() {
+    char x;
+    cout << "Enter character value: ";
+    cin >> x;
+    return x;
 }
 
 void listMenu() {
-    List<Data> list;
+    List<char> list;
     int choice;
 
     while (true) {
@@ -84,7 +77,7 @@ void listMenu() {
 }
 
 void dstackMenu() {
-    DStack<Data> dstack;
+    DStack<char> dstack;
     int choice;
 
     while (true) {
@@ -132,7 +125,7 @@ void dstackMenu() {
 }
 
 void dqueueMenu() {
-    DQueue<Data> dqueue;
+    DQueue<char> dqueue;
     int choice;
 
     while (true) {
@@ -189,7 +182,7 @@ void dqueueMenu() {
 }
 
 void sstackMenu() {
-    SStack<Data> sstack;
+    SStack<char> sstack;
     int choice;
 
     while (true) {
@@ -247,7 +240,7 @@ void sstackMenu() {
 }
 
 void squeueMenu() {
-    SQueue<Data> squeue;
+    SQueue<char> squeue;
     int choice;
 
     while (true) {
