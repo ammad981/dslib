@@ -20,21 +20,31 @@ char getData() {
     return x;
 }
 
+// Function to handle search result output
+void printSearchResult(int position) {
+    if (position != -1) {
+        cout << "Element found at position: " << position << endl;
+    } else {
+        cout << "Element not found!" << endl;
+    }
+}
+
 void listMenu() {
     List<char> list;
     int choice;
 
     while (true) {
         cout << "\nLinked List Operations:\n"
-             << "1. Insert at beginning\n"
-             << "2. Insert at end\n"
-             << "3. Insert at position\n"
-             << "4. Delete from beginning\n"
-             << "5. Delete from end\n"
-             << "6. Delete from position\n"
-             << "7. Print list\n"
-             << "8. Return to main menu\n"
-             << "Enter choice: ";
+                << "1. Insert at beginning\n"
+                << "2. Insert at end\n"
+                << "3. Insert at position\n"
+                << "4. Delete from beginning\n"
+                << "5. Delete from end\n"
+                << "6. Delete from position\n"
+                << "7. Print list\n"
+                << "8. Search element\n"
+                << "9. Return to main menu\n"
+                << "Enter choice: ";
 
         cin >> choice;
 
@@ -69,6 +79,9 @@ void listMenu() {
                 list.printList();
                 break;
             case 8:
+                printSearchResult(list.search(getData()));
+                break;
+            case 9:
                 return;
             default:
                 cout << "Invalid choice!\n";
@@ -82,13 +95,14 @@ void dstackMenu() {
 
     while (true) {
         cout << "\nDynamic Stack Operations:\n"
-             << "1. Push\n"
-             << "2. Pop\n"
-             << "3. Get top\n"
-             << "4. Check if empty\n"
-             << "5. Print stack\n"
-             << "6. Return to main menu\n"
-             << "Enter choice: ";
+                << "1. Push\n"
+                << "2. Pop\n"
+                << "3. Get top\n"
+                << "4. Check if empty\n"
+                << "5. Print stack\n"
+                << "6. Search element\n"
+                << "7. Return to main menu\n"
+                << "Enter choice: ";
 
         cin >> choice;
 
@@ -117,6 +131,9 @@ void dstackMenu() {
                 dstack.printStack();
                 break;
             case 6:
+                printSearchResult(dstack.search(getData()));
+                break;
+            case 7:
                 return;
             default:
                 cout << "Invalid choice!\n";
@@ -130,14 +147,15 @@ void dqueueMenu() {
 
     while (true) {
         cout << "\nDynamic Queue Operations:\n"
-             << "1. Enqueue\n"
-             << "2. Dequeue\n"
-             << "3. Get front\n"
-             << "4. Get rear\n"
-             << "5. Check if empty\n"
-             << "6. Print queue\n"
-             << "7. Return to main menu\n"
-             << "Enter choice: ";
+                << "1. Enqueue\n"
+                << "2. Dequeue\n"
+                << "3. Get front\n"
+                << "4. Get rear\n"
+                << "5. Check if empty\n"
+                << "6. Print queue\n"
+                << "7. Search element\n"
+                << "8. Return to main menu\n"
+                << "Enter choice: ";
 
         cin >> choice;
 
@@ -174,6 +192,9 @@ void dqueueMenu() {
                 dqueue.printQueue();
                 break;
             case 7:
+                printSearchResult(dqueue.search(getData()));
+                break;
+            case 8:
                 return;
             default:
                 cout << "Invalid choice!\n";
@@ -187,14 +208,15 @@ void sstackMenu() {
 
     while (true) {
         cout << "\nStatic Stack Operations:\n"
-             << "1. Push\n"
-             << "2. Pop\n"
-             << "3. Get top\n"
-             << "4. Check if empty\n"
-             << "5. Check if full\n"
-             << "6. Print stack\n"
-             << "7. Return to main menu\n"
-             << "Enter choice: ";
+                << "1. Push\n"
+                << "2. Pop\n"
+                << "3. Get top\n"
+                << "4. Check if empty\n"
+                << "5. Check if full\n"
+                << "6. Print stack\n"
+                << "7. Search element\n"
+                << "8. Return to main menu\n"
+                << "Enter choice: ";
 
         cin >> choice;
 
@@ -232,6 +254,9 @@ void sstackMenu() {
                 sstack.printStack();
                 break;
             case 7:
+                printSearchResult(sstack.search(getData()));
+                break;
+            case 8:
                 return;
             default:
                 cout << "Invalid choice!\n";
@@ -245,15 +270,16 @@ void squeueMenu() {
 
     while (true) {
         cout << "\nStatic Queue Operations:\n"
-             << "1. Enqueue\n"
-             << "2. Dequeue\n"
-             << "3. Get front\n"
-             << "4. Get rear\n"
-             << "5. Check if empty\n"
-             << "6. Check if full\n"
-             << "7. Print queue\n"
-             << "8. Return to main menu\n"
-             << "Enter choice: ";
+                << "1. Enqueue\n"
+                << "2. Dequeue\n"
+                << "3. Get front\n"
+                << "4. Get rear\n"
+                << "5. Check if empty\n"
+                << "6. Check if full\n"
+                << "7. Print queue\n"
+                << "8. Search element\n"
+                << "9. Return to main menu\n"
+                << "Enter choice: ";
 
         cin >> choice;
 
@@ -299,6 +325,9 @@ void squeueMenu() {
                 squeue.printQueue();
                 break;
             case 8:
+                printSearchResult(squeue.search(getData()));
+                break;
+            case 9:
                 return;
             default:
                 cout << "Invalid choice!\n";
@@ -308,19 +337,19 @@ void squeueMenu() {
 
 int main() {
     cout << "Welcome to Data Structures Library Demo!\n"
-         << "This program demonstrates various data structure implementations\n"
-         << "using a custom Data type with integer and character fields.\n\n";
+            << "This program demonstrates various data structure implementations\n"
+            << "using a custom Data type with integer and character fields.\n\n";
 
     int choice;
     while (true) {
         cout << "\nMain Menu:\n"
-             << "1. Linked List\n"
-             << "2. Dynamic Stack\n"
-             << "3. Dynamic Queue\n"
-             << "4. Static Stack\n"
-             << "5. Static Queue\n"
-             << "6. Exit\n"
-             << "Enter choice: ";
+                << "1. Linked List\n"
+                << "2. Dynamic Stack\n"
+                << "3. Dynamic Queue\n"
+                << "4. Static Stack\n"
+                << "5. Static Queue\n"
+                << "6. Exit\n"
+                << "Enter choice: ";
 
         cin >> choice;
 
