@@ -1,34 +1,71 @@
 // Static size queue implemented with arrays
-// Author: Muhmmad Ahmad 23122--
+// Author: Muhammad Ahmad 2312212
 
 #ifndef SQUEUE_H
 #define SQUEUE_H
 
-template <typename T>
-class SQueue {
-    static const int MAX_SIZE = 100;
-    T* arr;
-    int frontIndex;
-    int rearIndex;
-    int count;
+#include <iostream>
+
+template <typename T> class SQueue {
+  const int MAX_SIZE = 100;
+  T *arr;
+  int frontIndex;
+  int rearIndex;
 
 public:
-    SQueue(): arr(nullptr), frontIndex(0), rearIndex(0), count(0) {
+  SQueue() : arr(new T[MAX_SIZE]), frontIndex(-1), rearIndex(-1) {}
+
+  void enqueue(T data) {
+    if (isFull()) {
+      std::cout << "Queue is full" << data << std::endl;
+      return;
     }
+    if (isEmpty()) {
+      frontIndex = 0;
+    }
+    rearIndex++;
+    arr[rearIndex] = data;
+  }
 
-    void enqueue(T data) {}
+  void dequeue() {
+    if (isEmpty()) {
+      std::cout << "Queue is empty" << std::endl;
+      return;
+    }
+    frontIndex++;
+    if (frontIndex > rearIndex) {
+      frontIndex = rearIndex = -1;
+    }
+  }
 
-    void dequeue() {}
+  T getFront() {
+    if (isEmpty()) {
+      std::cout << "Queue is empty" << std::endl;
+    }
+    return arr[frontIndex];
+  }
 
-    T getFront() {}
+  T getRear() {
+    if (isEmpty()) {
+      std::cout << "Queue is empty" << std::endl;
+    }
+    return arr[rearIndex];
+  }
 
-    T getRear() {}
+  bool isEmpty() { return frontIndex == -1; }
 
-    bool isEmpty() {}
+  bool isFull() { return rearIndex == MAX_SIZE - 1; }
 
-    bool isFull() {}
-
-    void printQueue() {}
+  void printQueue() {
+    if (isEmpty()) {
+      std::cout << "Queue is empty" << std::endl;
+      return;
+    }
+    for (int i = frontIndex; i <= rearIndex; i++) {
+      std::cout << arr[i] << " ";
+    }
+    std::cout << std::endl;
+  }
 };
 
 #endif
