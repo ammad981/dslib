@@ -6,66 +6,82 @@
 
 #include <iostream>
 
-template <typename T> class SQueue {
-  const int MAX_SIZE = 100;
-  T *arr;
-  int frontIndex;
-  int rearIndex;
+template<typename T>
+class SQueue {
+    const int MAX_SIZE = 100;
+    T *arr;
+    int frontIndex;
+    int rearIndex;
 
 public:
-  SQueue() : arr(new T[MAX_SIZE]), frontIndex(-1), rearIndex(-1) {}
+    SQueue() : arr(new T[MAX_SIZE]), frontIndex(-1), rearIndex(-1) {
+    }
 
-  void enqueue(T data) {
-    if (isFull()) {
-      std::cout << "Queue is full" << data << std::endl;
-      return;
+    void enqueue(T data) {
+        if (isFull()) {
+            std::cout << "Queue is full" << data << std::endl;
+            return;
+        }
+        if (isEmpty()) {
+            frontIndex = 0;
+        }
+        rearIndex++;
+        arr[rearIndex] = data;
     }
-    if (isEmpty()) {
-      frontIndex = 0;
-    }
-    rearIndex++;
-    arr[rearIndex] = data;
-  }
 
-  void dequeue() {
-    if (isEmpty()) {
-      std::cout << "Queue is empty" << std::endl;
-      return;
+    void dequeue() {
+        if (isEmpty()) {
+            std::cout << "Queue is empty" << std::endl;
+            return;
+        }
+        frontIndex++;
+        if (frontIndex > rearIndex) {
+            frontIndex = rearIndex = -1;
+        }
     }
-    frontIndex++;
-    if (frontIndex > rearIndex) {
-      frontIndex = rearIndex = -1;
-    }
-  }
 
-  T getFront() {
-    if (isEmpty()) {
-      std::cout << "Queue is empty" << std::endl;
+    T getFront() {
+        if (isEmpty()) {
+            std::cout << "Queue is empty" << std::endl;
+        }
+        return arr[frontIndex];
     }
-    return arr[frontIndex];
-  }
 
-  T getRear() {
-    if (isEmpty()) {
-      std::cout << "Queue is empty" << std::endl;
+    T getRear() {
+        if (isEmpty()) {
+            std::cout << "Queue is empty" << std::endl;
+        }
+        return arr[rearIndex];
     }
-    return arr[rearIndex];
-  }
 
-  bool isEmpty() { return frontIndex == -1; }
+    bool isEmpty() { return frontIndex == -1; }
 
-  bool isFull() { return rearIndex == MAX_SIZE - 1; }
+    bool isFull() { return rearIndex == MAX_SIZE - 1; }
 
-  void printQueue() {
-    if (isEmpty()) {
-      std::cout << "Queue is empty" << std::endl;
-      return;
+    int search(T target) {
+        if (isEmpty()) {
+            return -1;
+        }
+
+        for (int i = frontIndex; i <= rearIndex; i++) {
+            if (arr[i] == target) {
+                return i - frontIndex; // Return position relative to front
+            }
+        }
+
+        return -1;
     }
-    for (int i = frontIndex; i <= rearIndex; i++) {
-      std::cout << arr[i] << " ";
+
+    void printQueue() {
+        if (isEmpty()) {
+            std::cout << "Queue is empty" << std::endl;
+            return;
+        }
+        for (int i = frontIndex; i <= rearIndex; i++) {
+            std::cout << arr[i] << " ";
+        }
+        std::cout << std::endl;
     }
-    std::cout << std::endl;
-  }
 };
 
 #endif

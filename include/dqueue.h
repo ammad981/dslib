@@ -6,20 +6,22 @@
 
 #include <iostream>
 
-template <typename T>
+template<typename T>
 class DQueue {
     struct Node {
         T data;
         Node *next;
 
-        Node(T val) : data(val), next(nullptr) {}
+        Node(T val) : data(val), next(nullptr) {
+        }
     };
 
     Node *front;
     Node *rear;
 
 public:
-    DQueue() : front(nullptr), rear(nullptr) {}
+    DQueue() : front(nullptr), rear(nullptr) {
+    }
 
     ~DQueue() {
         while (!isEmpty()) {
@@ -68,6 +70,25 @@ public:
 
     bool isEmpty() {
         return front == nullptr;
+    }
+
+    int search(T target) {
+        if (isEmpty()) {
+            return -1;
+        }
+
+        Node *current = front;
+        int position = 0;
+
+        while (current != nullptr) {
+            if (current->data == target) {
+                return position;
+            }
+            current = current->next;
+            position++;
+        }
+
+        return -1;
     }
 
     void printQueue() {
