@@ -1,3 +1,6 @@
+// graphs.h - Header file for Graph Algorithms
+// Author: Wajeeh Ahmed 2312223
+
 #ifndef GRAPH_H
 #define GRAPH_H
 

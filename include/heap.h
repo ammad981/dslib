@@ -1,4 +1,6 @@
 // heap.h - Header file for Heap Algorithms
+// Author: Muhammad Ahmad 2312212
+
 #ifndef HEAP_H
 #define HEAP_H
 

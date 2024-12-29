@@ -1,4 +1,6 @@
 // hashing.h - Header file for Hashing Algorithms
+// Author: Musa Ibrahim 2312211
+
 #ifndef HASHING_H
 #define HASHING_H
 

@@ -1,3 +1,6 @@
+// arrays.h - Header file for 2D AND 3D ARRAYS
+// Author: Muhammad Umar 2212445
+
 #ifndef ARRAYS_H
 #define ARRAYS_H
 
