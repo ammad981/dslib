@@ -1,49 +1,105 @@
 # dslib
 
-A comprehensive collection of commonly used data structures implemented as header-only C++ libraries. These implementations focus on simplicity, efficiency, and ease of use while maintaining modern C++ practices.
+A comprehensive collection of commonly used data structures and algorithms implemented as header-only C++ libraries. These implementations focus on simplicity, efficiency, and ease of use while maintaining modern C++ practices.
 
-## Overview
+---
 
-dslib provides template-based implementations of fundamental data structures, making them type-safe and reusable across different data types. All implementations are header-only, eliminating the need for separate compilation and simplifying integration into your projects.
+## **Overview**
 
-## Available Data Structures
+dslib provides template-based implementations of fundamental data structures and algorithms, making them type-safe and reusable across different data types. All implementations are header-only, eliminating the need for separate compilation and simplifying integration into your projects.
 
-- **Linked List**: A singly-linked list implementation (`list.h`)
-  - Supports insertion/deletion at beginning, end, and arbitrary positions
-  - Forward traversal
-  - Template-based for any data type
+---
 
-- **Queue**:
-  - **Dynamic Queue** (`dqueue.h`): FIFO container using linked list
-    - Efficient enqueue and dequeue operations
-    - Front and rear access
-    - Unlimited size
-  - **Static Queue** (`squeue.h`): FIFO container using array
-    - Fixed-size implementation
-    - Circular array for space efficiency
-    - Size tracking
+## **Available Data Structures and Algorithms**
 
-- **Stack**:
-  - **Dynamic Stack** (`dstack.h`): LIFO container using linked list
-    - Push and pop operations
-    - Top element access
-    - Unlimited size
-  - **Static Stack** (`sstack.h`): LIFO container using array
-    - Fixed-size implementation
-    - Efficient memory usage
-    - Size tracking
+### **1. Linked List** (`list.h`):
 
-## Features
+- Singly-linked list implementation.
+- Supports insertion/deletion at the **beginning**, **end**, and **arbitrary positions**.
+- Forward traversal and searching capabilities.
+- Template-based for any data type.
 
-- **Header-Only**: Just include and use
-- **Template-Based**: Works with any data type
-- **Memory Efficient**: Both static and dynamic implementations
-- **Modern C++**: Utilizes C++11 and later features
-- **Well-Documented**: Clear documentation and examples
+### **2. Queue**:
 
-## Usage
+- **Dynamic Queue** (`dqueue.h`): FIFO container using linked list.
+  - Efficient enqueue and dequeue operations.
+  - Front and rear access.
+  - Unlimited size.
+- **Static Queue** (`squeue.h`): FIFO container using array.
+  - Fixed-size implementation.
+  - Circular array for space efficiency.
+  - Size tracking.
 
-### Installation
+### **3. Stack**:
+
+- **Dynamic Stack** (`dstack.h`): LIFO container using linked list.
+  - Push and pop operations.
+  - Top element access.
+  - Unlimited size.
+- **Static Stack** (`sstack.h`): LIFO container using array.
+  - Fixed-size implementation.
+  - Efficient memory usage.
+  - Size tracking.
+
+### **4. Graphs** (`graphs.h`):
+
+- Implements **BFS (Breadth-First Search)** and **DFS (Depth-First Search)** algorithms.
+- **Dijkstra's Algorithm** for shortest path calculation.
+- Supports **weighted and unweighted edges**.
+- Adjacency matrix representation.
+
+### **5. Hashing** (`hashing.h`):
+
+- Implements **hash table** with **chaining** for collision handling.
+- Basic operations:
+  - Insert.
+  - Search.
+  - Delete.
+- Template-based for flexible data types.
+
+### **6. Heaps** (`heap.h`):
+
+- **Max Heap** and **Min Heap** implementations.
+- Supports operations:
+  - Insert.
+  - Extract Max/Min.
+  - Print Heap.
+- Useful for **priority queues** and **sorting algorithms**.
+
+### **7. Sorting Algorithms** (`sorting.h`):
+
+- **Bubble Sort**: Simple sorting with `O(n^2)` complexity.
+- **Selection Sort**: Finds the minimum element in each pass.
+- **Insertion Sort**: Builds the sorted array one item at a time.
+- **Quick Sort**: Efficient `O(n log n)` divide-and-conquer sorting.
+- **Merge Sort**: Recursive `O(n log n)` sorting using merging.
+
+### **8. Trees** (`trees.h`):
+
+- **Binary Trees**:
+  - Insertion and traversal (Inorder, Preorder, Postorder).
+- **AVL Trees**:
+  - Self-balancing tree with rotations.
+  - Supports insertion with rebalancing.
+  - Inorder traversal for sorted outputs.
+
+---
+
+## **Features**
+
+- **Header-Only**: Just include and use.
+- **Template-Based**: Works with any data type.
+- **Memory Efficient**: Static and dynamic implementations.
+- **Modern C++ Design**: Utilizes C++11 and later features.
+- **Algorithms Support**: Includes graph traversal, hashing, heaps, and sorting.
+- **Interactive Menu System**: Allows users to test and explore data structures in real-time.
+- **Exception Handling**: Robust implementation for edge cases.
+
+---
+
+## **Usage**
+
+### **Installation**
 
 Simply copy the header files into your project and include them:
 
@@ -53,61 +109,72 @@ Simply copy the header files into your project and include them:
 #include "squeue.h"
 #include "dstack.h"
 #include "sstack.h"
+#include "graphs.h"
+#include "hashing.h"
+#include "heap.h"
+#include "sorting.h"
+#include "trees.h"
 ```
 
-### Basic Examples
+### **Basic Examples**
 
-#### Using List
+#### **Using Graphs**
+
 ```cpp
-List<int> myList;
-myList.insertAtBegin(1);
-myList.insertAtEnd(2);
-myList.printList();
+Graph<int> graph(5);
+graph.addEdge(0, 1, 10);
+graph.BFS(0);
 ```
 
-#### Using Dynamic Queue
+#### **Using Hash Table**
+
 ```cpp
-DQueue<string> myQueue;
-myQueue.enqueue("first");
-myQueue.enqueue("second");
-cout << myQueue.getFront(); // prints "first"
+HashTable<int> hashTable(10);
+hashTable.insert(25);
+hashTable.display();
 ```
 
-#### Using Static Stack
+#### **Using AVL Tree**
+
 ```cpp
-SStack<int> myStack;
-myStack.push(100);
-myStack.push(200);
-cout << myStack.getTop(); // prints 200
+AVLTree<int> avl;
+avl.insert(30);
+avl.insert(20);
+avl.displayInorder();
 ```
-
-## Requirements
-
-- C++11 or later
-- Any standard C++ compiler (GCC, Clang, MSVC)
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Future Plans
-
-- [ ] Implementation of additional data structures
-  - [ ] Binary Search Tree (BST)
-  - [ ] Hash Table
-  - [ ] Priority Queue/Heap
-  - [ ] Graph
-- [ ] Comprehensive test coverage using gtest
-- [ ] Performance benchmarking and optimization
-- [ ] Iterator support for all containers
-- [ ] Exception handling for edge cases
-- [ ] Documentation improvements
-  - [ ] Usage examples
-
-## Contact
-
-For bug reports and feature requests, please use the GitHub issue tracker.
 
 ---
 
-Please note that this is a learning/educational project and may not be suitable for production use without thorough testing.
+## **Requirements**
+
+- **C++11 or later**.
+- Any standard **C++ compiler** (GCC, Clang, MSVC).
+- **CMake** for build configuration.
+
+---
+
+## **Future Enhancements**
+
+- **File Handling**: Save and load data structures.
+- **Graph Visualization**: Support for exporting graphs to visualization tools.
+- **Dynamic Resizing**: Expandable arrays and hash tables.
+- **Deletion in Trees**: Implement delete operations for Binary and AVL trees.
+- **More Algorithms**:
+  - **Prim's and Kruskal's MST algorithms**.
+  - **Bellman-Ford and Floyd-Warshall shortest paths**.
+
+---
+
+## **License**
+
+This project is licensed under the **MIT License** - see the LICENSE file for details.
+
+---
+
+## **Contact**
+
+For **bug reports** and **feature requests**, please use the **GitHub issue tracker**.
+
+---
+
+This project serves as a **learning/educational resource** and is designed for exploring **data structures and algorithms concepts** interactively. Contributions and suggestions for improvement are welcome!
