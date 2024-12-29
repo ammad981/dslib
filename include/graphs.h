@@ -26,6 +26,12 @@ public:
         }
     }
 
+    // Getter to access the adjacency matrix
+    T getAdjMatrix(int i, int j) const
+    {
+        return adjMatrix[i][j];
+    }
+
     // Add Edge
     void addEdge(int u, int v, T weight = 1)
     {

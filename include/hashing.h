@@ -5,15 +5,15 @@
 #include <iostream>
 using namespace std;
 
-#define MAX_SIZE 100
+#define HASH_TABLE_SIZE 100
 
 template <typename T>
 class HashTable
 {
 private:
     int capacity;
-    T table[MAX_SIZE][MAX_SIZE]; // Hash table using chaining with fixed-size 2D array
-    int sizes[MAX_SIZE];         // Stores the size of each bucket
+    T table[HASH_TABLE_SIZE][HASH_TABLE_SIZE]; // Hash table using chaining with fixed-size 2D array
+    int sizes[HASH_TABLE_SIZE];                // Stores the size of each bucket
 
     // Hash function
     int hashFunction(T key)

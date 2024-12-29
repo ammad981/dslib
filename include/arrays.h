@@ -1,5 +1,5 @@
-#ifndef SORTING_H
-#define SORTING_H
+#ifndef ARRAYS_H
+#define ARRAYS_H
 
 #include <iostream>
 using namespace std;
