@@ -1,5 +1,5 @@
-#ifndef ARRAYS_H
-#define ARRAYS_H
+#ifndef SORTING_H
+#define SORTING_H
 
 #include <iostream>
 using namespace std;
@@ -9,13 +9,11 @@ template <typename T>
 class SingleArray
 {
 private:
-    int arr[100], n;
+    T arr[100];
+    int n;
 
 public:
-    SingleArray()
-    {
-        n = 0;
-    }
+    SingleArray() : n(0) {}
 
     void inputArray()
     {
@@ -30,7 +28,8 @@ public:
 
     void insertElement()
     {
-        int pos, value;
+        int pos;
+        T value;
         cout << "Enter position and value: ";
         cin >> pos >> value;
         if (pos > n || pos < 0)
@@ -79,7 +78,7 @@ public:
 
     void linearSearch()
     {
-        int key;
+        T key;
         cout << "Enter value to search: ";
         cin >> key;
         bool found = false;
@@ -98,7 +97,7 @@ public:
 
     void binarySearch()
     {
-        int key;
+        T key;
         cout << "Enter value to search: ";
         cin >> key;
         int left = 0, right = n - 1, mid;
@@ -131,7 +130,7 @@ template <typename T>
 class TwoDArray
 {
 private:
-    int mat1[10][10], mat2[10][10], res[10][10];
+    T mat1[10][10], mat2[10][10], res[10][10];
     int r1, c1, r2, c2;
 
 public:

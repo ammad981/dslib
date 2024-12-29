@@ -1,57 +1,60 @@
-// graph.h - Header file for Graph Algorithms
 #ifndef GRAPH_H
 #define GRAPH_H
 
 #include <iostream>
-#include <vector>
-#include <queue>
-#include <stack>
-#include <climits>
 using namespace std;
+
+#define MAX_VERTICES 100
+#define INF 999999
 
 template <typename T>
 class Graph
 {
 private:
     int vertices;
-    vector<vector<int>> adjList;
+    T adjMatrix[MAX_VERTICES][MAX_VERTICES];
 
 public:
     Graph(int v) : vertices(v)
     {
-        adjList.resize(v);
+        for (int i = 0; i < vertices; i++)
+        {
+            for (int j = 0; j < vertices; j++)
+            {
+                adjMatrix[i][j] = (i == j) ? 0 : INF;
+            }
+        }
     }
 
     // Add Edge
-    void addEdge(int u, int v)
+    void addEdge(int u, int v, T weight = 1)
     {
-        adjList[u].push_back(v);
-        adjList[v].push_back(u); // For undirected graph
+        adjMatrix[u][v] = weight;
+        adjMatrix[v][u] = weight; // For undirected graph
     }
 
     // Breadth-First Search (BFS)
     void BFS(int start)
     {
-        vector<bool> visited(vertices, false);
-        queue<int> q;
+        bool visited[MAX_VERTICES] = {false};
+        int queue[MAX_VERTICES], front = 0, rear = 0;
 
         visited[start] = true;
-        q.push(start);
+        queue[rear++] = start;
 
         cout << "BFS Traversal: ";
 
-        while (!q.empty())
+        while (front < rear)
         {
-            int node = q.front();
-            q.pop();
+            int node = queue[front++];
             cout << node << " ";
 
-            for (int neighbor : adjList[node])
+            for (int i = 0; i < vertices; i++)
             {
-                if (!visited[neighbor])
+                if (adjMatrix[node][i] != INF && !visited[i])
                 {
-                    visited[neighbor] = true;
-                    q.push(neighbor);
+                    visited[i] = true;
+                    queue[rear++] = i;
                 }
             }
         }
@@ -61,28 +64,27 @@ public:
     // Depth-First Search (DFS)
     void DFS(int start)
     {
-        vector<bool> visited(vertices, false);
-        stack<int> s;
+        bool visited[MAX_VERTICES] = {false};
+        int stack[MAX_VERTICES], top = -1;
 
-        s.push(start);
+        stack[++top] = start;
 
         cout << "DFS Traversal: ";
 
-        while (!s.empty())
+        while (top >= 0)
         {
-            int node = s.top();
-            s.pop();
+            int node = stack[top--];
 
             if (!visited[node])
             {
                 cout << node << " ";
                 visited[node] = true;
 
-                for (auto it = adjList[node].rbegin(); it != adjList[node].rend(); ++it)
+                for (int i = vertices - 1; i >= 0; i--)
                 {
-                    if (!visited[*it])
+                    if (adjMatrix[node][i] != INF && !visited[i])
                     {
-                        s.push(*it);
+                        stack[++top] = i;
                     }
                 }
             }
@@ -93,29 +95,34 @@ public:
     // Dijkstra's Algorithm
     void dijkstra(int start)
     {
-        vector<int> dist(vertices, INT_MAX);
-        vector<bool> visited(vertices, false);
-        priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
+        T dist[MAX_VERTICES];
+        bool visited[MAX_VERTICES] = {0};
 
-        pq.push({0, start});
+        for (int i = 0; i < vertices; i++)
+            dist[i] = INF;
+
         dist[start] = 0;
 
-        while (!pq.empty())
+        for (int i = 0; i < vertices - 1; i++)
         {
-            int u = pq.top().second;
-            pq.pop();
+            T minDist = INF;
+            int u = -1;
+            for (int j = 0; j < vertices; j++)
+            {
+                if (!visited[j] && dist[j] < minDist)
+                {
+                    minDist = dist[j];
+                    u = j;
+                }
+            }
 
-            if (visited[u])
-                continue;
             visited[u] = true;
 
-            for (int v : adjList[u])
+            for (int v = 0; v < vertices; v++)
             {
-                int weight = 1; // Assuming weight = 1 for simplicity
-                if (dist[u] + weight < dist[v])
+                if (!visited[v] && adjMatrix[u][v] != INF && dist[u] + adjMatrix[u][v] < dist[v])
                 {
-                    dist[v] = dist[u] + weight;
-                    pq.push({dist[v], v});
+                    dist[v] = dist[u] + adjMatrix[u][v];
                 }
             }
         }

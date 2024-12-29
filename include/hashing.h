@@ -3,51 +3,66 @@
 #define HASHING_H
 
 #include <iostream>
-#include <vector>
-#include <list>
 using namespace std;
+
+#define MAX_SIZE 100
 
 template <typename T>
 class HashTable
 {
 private:
-    int capacity;            // Table size
-    vector<list<int>> table; // Hash table using chaining
+    int capacity;
+    T table[MAX_SIZE][MAX_SIZE]; // Hash table using chaining with fixed-size 2D array
+    int sizes[MAX_SIZE];         // Stores the size of each bucket
 
     // Hash function
-    int hashFunction(int key)
+    int hashFunction(T key)
     {
-        return key % capacity;
+        return static_cast<int>(key) % capacity;
     }
 
 public:
     // Constructor
     HashTable(int size) : capacity(size)
     {
-        table.resize(capacity);
+        for (int i = 0; i < capacity; i++)
+        {
+            sizes[i] = 0;
+        }
     }
 
     // Insert key
-    void insert(int key)
+    void insert(T key)
     {
         int index = hashFunction(key);
-        table[index].push_back(key);
+        table[index][sizes[index]++] = key;
     }
 
     // Delete key
-    void remove(int key)
+    void remove(T key)
     {
         int index = hashFunction(key);
-        table[index].remove(key);
+        for (int i = 0; i < sizes[index]; i++)
+        {
+            if (table[index][i] == key)
+            {
+                for (int j = i; j < sizes[index] - 1; j++)
+                {
+                    table[index][j] = table[index][j + 1];
+                }
+                sizes[index]--;
+                break;
+            }
+        }
     }
 
     // Search key
-    bool search(int key)
+    bool search(T key)
     {
         int index = hashFunction(key);
-        for (int item : table[index])
+        for (int i = 0; i < sizes[index]; i++)
         {
-            if (item == key)
+            if (table[index][i] == key)
             {
                 return true;
             }
@@ -61,9 +76,9 @@ public:
         for (int i = 0; i < capacity; i++)
         {
             cout << "Bucket " << i << ": ";
-            for (int item : table[i])
+            for (int j = 0; j < sizes[i]; j++)
             {
-                cout << item << " -> ";
+                cout << table[i][j] << " -> ";
             }
             cout << "NULL\n";
         }

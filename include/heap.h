@@ -3,14 +3,17 @@
 #define HEAP_H
 
 #include <iostream>
-#include <vector>
 using namespace std;
 
+#define MAX_HEAP_SIZE 100
+
+// MaxHeap Class Template
 template <typename T>
 class MaxHeap
 {
 private:
-    vector<int> heap;
+    T heap[MAX_HEAP_SIZE];
+    int size;
 
     int parent(int i) { return (i - 1) / 2; }
     int leftChild(int i) { return 2 * i + 1; }
@@ -31,10 +34,10 @@ private:
         int left = leftChild(index);
         int right = rightChild(index);
 
-        if (left < heap.size() && heap[left] > heap[largest])
+        if (left < size && heap[left] > heap[largest])
             largest = left;
 
-        if (right < heap.size() && heap[right] > heap[largest])
+        if (right < size && heap[right] > heap[largest])
             largest = right;
 
         if (largest != index)
@@ -45,20 +48,24 @@ private:
     }
 
 public:
-    void insert(int value)
+    MaxHeap() : size(0) {}
+
+    void insert(T value)
     {
-        heap.push_back(value);
-        heapifyUp(heap.size() - 1);
+        if (size >= MAX_HEAP_SIZE)
+            throw runtime_error("Heap overflow");
+
+        heap[size++] = value;
+        heapifyUp(size - 1);
     }
 
-    int extractMax()
+    T extractMax()
     {
-        if (heap.empty())
+        if (size == 0)
             throw runtime_error("Heap is empty");
 
-        int maxVal = heap[0];
-        heap[0] = heap.back();
-        heap.pop_back();
+        T maxVal = heap[0];
+        heap[0] = heap[--size];
         heapifyDown(0);
 
         return maxVal;
@@ -66,18 +73,21 @@ public:
 
     void printHeap()
     {
-        for (int val : heap)
+        for (int i = 0; i < size; i++)
         {
-            cout << val << " ";
+            cout << heap[i] << " ";
         }
         cout << endl;
     }
 };
 
+// MinHeap Class Template
+template <typename T>
 class MinHeap
 {
 private:
-    vector<int> heap;
+    T heap[MAX_HEAP_SIZE];
+    int size;
 
     int parent(int i) { return (i - 1) / 2; }
     int leftChild(int i) { return 2 * i + 1; }
@@ -98,10 +108,10 @@ private:
         int left = leftChild(index);
         int right = rightChild(index);
 
-        if (left < heap.size() && heap[left] < heap[smallest])
+        if (left < size && heap[left] < heap[smallest])
             smallest = left;
 
-        if (right < heap.size() && heap[right] < heap[smallest])
+        if (right < size && heap[right] < heap[smallest])
             smallest = right;
 
         if (smallest != index)
@@ -112,20 +122,24 @@ private:
     }
 
 public:
-    void insert(int value)
+    MinHeap() : size(0) {}
+
+    void insert(T value)
     {
-        heap.push_back(value);
-        heapifyUp(heap.size() - 1);
+        if (size >= MAX_HEAP_SIZE)
+            throw runtime_error("Heap overflow");
+
+        heap[size++] = value;
+        heapifyUp(size - 1);
     }
 
-    int extractMin()
+    T extractMin()
     {
-        if (heap.empty())
+        if (size == 0)
             throw runtime_error("Heap is empty");
 
-        int minVal = heap[0];
-        heap[0] = heap.back();
-        heap.pop_back();
+        T minVal = heap[0];
+        heap[0] = heap[--size];
         heapifyDown(0);
 
         return minVal;
@@ -133,9 +147,9 @@ public:
 
     void printHeap()
     {
-        for (int val : heap)
+        for (int i = 0; i < size; i++)
         {
-            cout << val << " ";
+            cout << heap[i] << " ";
         }
         cout << endl;
     }
