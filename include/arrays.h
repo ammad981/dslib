@@ -5,6 +5,7 @@
 using namespace std;
 
 // Single Array Operations Class
+template <typename T>
 class SingleArray
 {
 private:
@@ -126,6 +127,7 @@ public:
 };
 
 // 2D Array Operations Class
+template <typename T>
 class TwoDArray
 {
 private:

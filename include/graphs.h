@@ -9,6 +9,7 @@
 #include <climits>
 using namespace std;
 
+template <typename T>
 class Graph
 {
 private:

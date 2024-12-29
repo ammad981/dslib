@@ -15,6 +15,7 @@ struct TreeNode
     TreeNode(int value) : data(value), left(nullptr), right(nullptr) {}
 };
 
+template <typename T>
 class BST
 {
 private:
