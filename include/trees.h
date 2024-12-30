@@ -1,5 +1,5 @@
 // trees.h - Header file for Tree Algorithms
-// Author: Ammad Qureshi 2312213
+// Author: Muhammad Umar 2212445
 
 #ifndef TREES_H
 #define TREES_H

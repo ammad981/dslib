@@ -1,5 +1,5 @@
 // sorting.h - Header file for Sorting Algorithms
-// Author: Muhammad Umar 2212445
+// Author: Ammad Qureshi 2312213
 
 #ifndef SORTING_H
 #define SORTING_H
